@@ -1,7 +1,7 @@
 /*
  * This confidential and proprietary software may be used only as
  * authorised by a licensing agreement from ARM Limited
- * (C) COPYRIGHT 2008-2012 ARM Limited
+ * (C) COPYRIGHT 2008-2013 ARM Limited
  * ALL RIGHTS RESERVED
  * The entire notice above must be reproduced on all authorised
  * copies and copies may only be made to the extent permitted
@@ -28,6 +28,7 @@ typedef enum
 	FBDEV_PIXMAP_COLORSPACE_sRGB = (1<<2),
 	FBDEV_PIXMAP_EGL_MEMORY = (1<<3),       /* EGL allocates/frees this memory */
 	FBDEV_PIXMAP_DMA_BUF = (1<<4),
+	FBDEV_PIXMAP_PHYADDR = (1<<5),
 } fbdev_pixmap_flags;
 
 typedef struct fbdev_window
@@ -35,6 +36,12 @@ typedef struct fbdev_window
 	unsigned short width;
 	unsigned short height;
 } fbdev_window;
+
+typedef struct fbdev_pixmap_addr {
+	void *viraddr;
+	unsigned int phyaddr;
+	unsigned int memsize;
+}fbdev_pixmap_addr;
 
 typedef struct fbdev_pixmap
 {
